@@ -73,7 +73,7 @@
                         // TODO remove versions in csproj
                         success = true;
                     });
-            if (success && !OnlySimulate && !string.IsNullOrEmpty(markupResult))
+            if (success && OnlySimulate && !string.IsNullOrEmpty(markupResult))
             {
                 AnsiConsole.MarkupLine($"The following content would be written to [bold white]{targetFile}[/] if executed with command [bold white]execute[/]:");
                 AnsiConsole.Markup(markupResult);
@@ -174,8 +174,8 @@
         {
             var table = new Table();
             table.Border(TableBorder.Square);
-            table.AddColumn(new TableColumn(new Markup("[yellow]Package ID[/]")));
-            table.AddColumn(new TableColumn("[blue]Version[/]"));
+            table.AddColumn(new TableColumn(new Markup("Package ID")));
+            table.AddColumn(new TableColumn("Version"));
             foreach (var package in packages.Keys.OrderBy(k => k))
             {
                 table.AddRow(package, packages[package]);
