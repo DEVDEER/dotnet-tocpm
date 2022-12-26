@@ -2,8 +2,42 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net7.0</TargetFramework>
+		<AssemblyName>tocpm</AssemblyName>
 		<RootNamespace>devdeer.tools.tocpm</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Version>0.0.1-alpha</Version>
+		<PackageId>devdeer.tools.tocpm</PackageId>
+		<Title>Nuget CPM converter</Title>
+		<Authors>DEVDEER GmbH</Authors>
+		<Description>This dotnet tool reads all csproj-files under a given folder and converts them to use the Nuget CPM instead of implicit versionning inside the csproj.  </Description>
+		<Copyright>2022 DEVDEER GmbH</Copyright>
+		<PackageProjectUrl>https://github.com/DEVDEER/dotnet-tocpm</PackageProjectUrl>
+		<PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+		<RepositoryUrl>https://github.com/DEVDEER/dotnet-tocpm</RepositoryUrl>
+		<RepositoryType>Github</RepositoryType>
+		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageIcon>icon.png</PackageIcon>
 	</PropertyGroup>
+	<PropertyGroup>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>tocpm</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="logo.txt" />
+	  <Content Include="logo.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <None Update="icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Spectre.Console" Version="0.45.0" />
+	  <PackageReference Include="Spectre.Console.Cli" Version="0.45.0" />
+	</ItemGroup>
 </Project>
