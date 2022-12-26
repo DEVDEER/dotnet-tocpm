@@ -32,6 +32,7 @@
             }
             var targetFile = Path.Combine(path, CpmFileName);
             var success = false;
+            string? result = null;
             string? markupResult = null;
             AnsiConsole.MarkupLine("Running...");
             AnsiConsole.Status()
@@ -57,24 +58,48 @@
                         }
                         OutputHelper.PrintPackages(packages);
                         ctx.Status = "Generating CPM file...";
-                        var result = CoreLogic.GetPackagePropContent(packages);
+                        result = CoreLogic.GetPackagePropContent(packages);
                         if (OnlySimulate)
                         {
                             markupResult = MarkupHelper.AddConsoleMarkup(result);
                             success = true;
-                            return;
                         }
-                        File.WriteAllText(targetFile, result);
-                        AnsiConsole.MarkupLine($"File [bold white]{targetFile}[/] was generated.");
-                        ctx.Status = "Removing explicit versions in project files...";
-                        // TODO remove versions in csproj
-                        success = true;
                     });
             if (success && OnlySimulate && !string.IsNullOrEmpty(markupResult))
             {
                 AnsiConsole.MarkupLine($"The following content would be written to [bold white]{targetFile}[/] if executed with command [bold white]execute[/]:");
                 AnsiConsole.Markup(markupResult);
+                // simulation completed
+                return 0;
             }
+            if (!settings.Force ?? true)
+            {
+                // ge
+                if (!AnsiConsole.Confirm("Do you want to execute the replacement now?"))
+                {
+                    AnsiConsole.MarkupLine("Operation cancelled by user.");
+                    return 1;
+                }
+            }
+            AnsiConsole.Status()
+                .Start(
+                    "Tranforming folder to CPM...",
+                    ctx =>
+                    {
+                        try
+                        {
+                            File.WriteAllText(targetFile, result);
+                        }
+                        catch (Exception ex)
+                        {
+                            AnsiConsole.WriteException(ex);
+                            return;
+                        }
+                        AnsiConsole.MarkupLine($"File [bold white]{targetFile}[/] was generated.");
+                        ctx.Status = "Removing explicit versions in project files...";
+                        // TODO remove versions in csproj
+                        success = true;
+                    });
             return success ? 0 : 1;
         }
 
