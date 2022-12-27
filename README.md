@@ -1,4 +1,4 @@
-![CI](https://github.com/devdeer/dotnet-tocpm/actions/workflows/main.yaml/badge.svg)
+![CI](https://github.com/DEVDEER/dotnet-tocpm/actions/workflows/main.yml/badge.svg?branch=main)
 ![](https://img.shields.io/nuget/v/devdeer.tools.tocpm)
 
 # dotnet-tocpm
