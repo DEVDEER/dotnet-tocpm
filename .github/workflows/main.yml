@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src
+        working-directory: src/Ui/Ui.ConsoleApp
     strategy:
       matrix:
         dotnet-version: ['7.0.x']
