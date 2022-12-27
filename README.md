@@ -9,6 +9,10 @@ Dotnet global tool to convert solutions to the [Nuget CPM](https://devblogs.micr
 
 Switching to Nuget CPM can be a pain when it comes to bigger solutions containing a number of projects. `dotnet-tocpm` was created to perform this operation in one simple step.
 
+I made this video on my codingfreaks channel on yt where I explain the background and the usage of this tool:
+
+![](https://youtu.be/t0IOzOdRh2U)
+
 ## Requirements
 
 The tool requires the .NET 7 runtime (or SDK) installed on the machine.
