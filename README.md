@@ -11,7 +11,11 @@ Switching to Nuget CPM can be a pain when it comes to bigger solutions containin
 
 I made this video on my codingfreaks channel on yt where I explain the background and the usage of this tool:
 
-![](https://youtu.be/t0IOzOdRh2U)
+<div align="left">
+      <a href="https://www.youtube.com/watch?v=t0IOzOdRh2U">
+         <img src="https://img.youtube.com/vi/t0IOzOdRh2U/0.jpg" style="width:50%;">
+      </a>
+</div>
 
 ## Requirements
 
