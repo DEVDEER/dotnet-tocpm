@@ -6,7 +6,7 @@
 		<RootNamespace>devdeer.tools.tocpm</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>0.0.2-alpha</Version>
+		<Version>0.0.3-alpha</Version>
 		<PackageId>devdeer.tools.tocpm</PackageId>
 		<Title>Nuget CPM converter</Title>
 		<Authors>DEVDEER GmbH</Authors>
@@ -18,7 +18,7 @@
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>
-			- Updated readme content
+			- Fixed issue when running in simulation mode
 		</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>
