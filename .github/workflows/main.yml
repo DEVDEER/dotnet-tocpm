@@ -17,26 +17,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install GitVersion
+        if: ${{ false }}
         uses: gittools/actions/gitversion/setup@v0.9.7
         with:
           versionSpec: '5.x'
       - name: Build version
+        if: ${{ false }}
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
         with:
           useConfigFile: true
           configFilePath: ./.github/gitversion.yml
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build -c Release --no-restore /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{ steps.gitversion.outputs.InformationalVersion }}
+        run: dotnet build -c Release --no-restore
       - name: Test
-        run: dotnet test -c Release /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} --no-build --verbosity normal
+        run: dotnet test -c Release --no-build --verbosity normal
       - name: Pack
-        run: dotnet pack -c Release -o package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
+        run: dotnet pack -c Release -o package
       - name: Push
         run: dotnet nuget push ./package/*.nupkg --source "https://nuget.pkg.github.com/DEVDEER/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
