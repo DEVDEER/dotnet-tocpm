@@ -27,10 +27,6 @@
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<None Remove="logo.txt" />
-		<Content Include="logo.txt">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 		<None Update="icon.png">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
