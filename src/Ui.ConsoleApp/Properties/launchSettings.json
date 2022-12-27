@@ -3,7 +3,7 @@
   "profiles": {
     "LocalDebug": {
       "commandName": "Project",
-      "commandLineArgs": "simulate D:\\repos\\Heurich\\Laker",
+      "commandLineArgs": "execute D:\\repos\\Heurich\\Laker",
       "environmentVariables": {
       }
     }

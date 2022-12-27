@@ -22,9 +22,16 @@
         /// Indicates if writing the files should be done without any security check.
         /// </summary>
         [CommandOption("-f|--force")]
-        [Description("When set the command executes without any security check from the user")]
+        [Description("If set, the command executes without any security check from the user")]
         public bool? Force { get; set; }
-        
+
+        /// <summary>
+        /// Indicates if writing the files should be done without any security check.
+        /// </summary>
+        [CommandOption("-b|--backup")]
+        [Description("If set, the command will generate a backup of every project file before editing it.")]
+        public bool? Backup { get; set; }
+
         #endregion
     }
 }

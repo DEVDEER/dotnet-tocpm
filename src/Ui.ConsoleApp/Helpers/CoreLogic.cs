@@ -53,7 +53,7 @@
         public static Dictionary<string, string> GetPackages(FileInfo[] files)
         {
             var result = new Dictionary<string, string>();
-            var regex = new Regex("<PackageReference Include=\"(.*)\" Version=\"(.*)\" />");
+            var regex = new Regex("<PackageReference Include=\"(.*)\" Version=\"(.*)\"( /)?>");
             foreach (var file in files)
             {
                 var matches = regex.Matches(File.ReadAllText(file.FullName));
@@ -81,5 +81,31 @@
         }
 
         #endregion
+
+        /// <summary>
+        /// Removes all versions from <PackageReference /> elements in the given <paramref name="files"/>.
+        /// </summary>
+        /// <param name="files">The list of files in which to remove versions.</param>
+        /// <param name="backup">Indicates if every file should be backed up before operation.</param>
+        public static void RemoveVersions(FileInfo[]? files, bool backup = true)
+        {
+            var regex = new Regex("<PackageReference (.*)( Version=\"(.*)\")");
+            foreach (var file in files)
+            {
+                if (backup)
+                {
+                    file.CopyTo(
+                        Path.Combine(file.DirectoryName, file.Name.Replace(file.Extension, $"{file.Extension}.bak")));
+                }
+                var fileContent = File.ReadAllText(file.FullName);
+                var newContent = regex.Replace(
+                    fileContent,
+                    m => m.Value.Replace(
+                        m.Groups[2]
+                            .Value,
+                        ""));
+                File.WriteAllText(file.FullName, newContent);
+            }
+        }
     }
 }

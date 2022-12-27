@@ -34,6 +34,7 @@
             var success = false;
             string? result = null;
             string? markupResult = null;
+            FileInfo[]? files = null;
             AnsiConsole.MarkupLine("Running...");
             AnsiConsole.Status()
                 .Start(
@@ -42,7 +43,7 @@
                     {
                         // collect files
                         ctx.Spinner(Spinner.Known.Default);
-                        var files = CoreLogic.CollectProjectFiles(path, "csproj");
+                        files = CoreLogic.CollectProjectFiles(path, "csproj");
                         AnsiConsole.MarkupLine($"Found [bold yellow]{files.Length}[/] files.");
                         if (files.Length == 0)
                         {
@@ -97,8 +98,16 @@
                         }
                         AnsiConsole.MarkupLine($"File [bold white]{targetFile}[/] was generated.");
                         ctx.Status = "Removing explicit versions in project files...";
-                        // TODO remove versions in csproj
-                        success = true;
+                        try
+                        {
+                            CoreLogic.RemoveVersions(files, settings.Backup ?? false);
+                            AnsiConsole.MarkupLine($"Command succeeded. [bold yellow]{files.Length}[/] files where edited and [bold yellow]{targetFile}[/] was generated in working folder.");
+                            success = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            AnsiConsole.WriteException(ex);
+                        }
                     });
             return success ? 0 : 1;
         }
