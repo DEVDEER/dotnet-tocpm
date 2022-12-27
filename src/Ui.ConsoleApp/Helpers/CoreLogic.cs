@@ -4,6 +4,9 @@
 
     using Models.Result;
 
+    /// <summary>
+    /// Provides core logic methods.
+    /// </summary>
     public static class CoreLogic
     {
         #region methods
@@ -70,7 +73,7 @@
                     else
                     {
                         var currentVersion = result[name];
-                        if (version.IsBiggerThan(currentVersion))
+                        if (version.IsGreaterThan(currentVersion))
                         {
                             result[name] = version;
                         }
@@ -80,10 +83,8 @@
             return result;
         }
 
-        #endregion
-
         /// <summary>
-        /// Removes all versions from <PackageReference /> elements in the given <paramref name="files"/>.
+        /// Removes all versions from <PackageReference /> elements in the given <paramref name="files" />.
         /// </summary>
         /// <param name="files">The list of files in which to remove versions.</param>
         /// <param name="backup">Indicates if every file should be backed up before operation.</param>
@@ -107,5 +108,7 @@
                 File.WriteAllText(file.FullName, newContent);
             }
         }
+
+        #endregion
     }
 }

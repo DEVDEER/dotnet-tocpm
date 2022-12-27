@@ -2,6 +2,9 @@
 {
     using System.Text.RegularExpressions;
 
+    /// <summary>
+    /// Provides methods for dealing with console markup.
+    /// </summary>
     public static class MarkupHelper
     {
         #region methods

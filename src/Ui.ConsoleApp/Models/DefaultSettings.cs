@@ -1,7 +1,6 @@
 ﻿namespace devdeer.tools.tocpm.Models
 {
     using System.ComponentModel;
-    using System.Reflection;
 
     using Spectre.Console.Cli;
 
@@ -16,8 +15,8 @@
         /// The path where to run the tool in.
         /// </summary>
         [CommandArgument(0, "[PATH]")]
-        public string Path { get; set; }
-        
+        public string Path { get; set; } = null!;
+
         /// <summary>
         /// Indicates if writing the files should be done without any security check.
         /// </summary>

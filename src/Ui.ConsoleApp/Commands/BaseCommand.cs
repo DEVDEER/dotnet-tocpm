@@ -1,5 +1,7 @@
 ﻿namespace devdeer.tools.tocpm.Commands
 {
+    using System.Diagnostics.CodeAnalysis;
+
     using Helpers;
 
     using Models;
@@ -21,7 +23,7 @@
         #region methods
 
         /// <inheritdoc />
-        public override int Execute(CommandContext context, DefaultSettings settings)
+        public override int Execute([NotNull] CommandContext context, [NotNull] DefaultSettings settings)
         {
             var path = settings.Path;
             if (!Directory.Exists(path))
@@ -45,7 +47,7 @@
                         ctx.Spinner(Spinner.Known.Default);
                         files = CoreLogic.CollectProjectFiles(path, "csproj");
                         AnsiConsole.MarkupLine($"Found [bold yellow]{files.Length}[/] files.");
-                        if (files.Length == 0)
+                        if (!files.Any())
                         {
                             // nothing to do
                             return;
@@ -68,7 +70,8 @@
                     });
             if (success && OnlySimulate && !string.IsNullOrEmpty(markupResult))
             {
-                AnsiConsole.MarkupLine($"The following content would be written to [bold white]{targetFile}[/] if executed with command [bold white]execute[/]:");
+                AnsiConsole.MarkupLine(
+                    $"The following content would be written to [bold white]{targetFile}[/] if executed with command [bold white]execute[/]:");
                 AnsiConsole.Markup(markupResult);
                 // simulation completed
                 return 0;
@@ -100,8 +103,9 @@
                         ctx.Status = "Removing explicit versions in project files...";
                         try
                         {
-                            CoreLogic.RemoveVersions(files, settings.Backup ?? false);
-                            AnsiConsole.MarkupLine($"Command succeeded. [bold yellow]{files.Length}[/] files where edited and [bold yellow]{targetFile}[/] was generated in working folder.");
+                            CoreLogic.RemoveVersions(files!, settings.Backup ?? false);
+                            AnsiConsole.MarkupLine(
+                                $"Command succeeded. [bold yellow]{files!.Length}[/] files where edited and [bold yellow]{targetFile}[/] was generated in working folder.");
                             success = true;
                         }
                         catch (Exception ex)

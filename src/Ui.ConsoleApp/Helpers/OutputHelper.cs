@@ -1,14 +1,13 @@
 ﻿namespace devdeer.tools.tocpm.Helpers
 {
-    using System.Text.RegularExpressions;
-
     using Spectre.Console;
 
+    /// <summary>
+    /// Provides helper methods for output operations.
+    /// </summary>
     public static class OutputHelper
     {
         #region methods
-
-        
 
         /// <summary>
         /// Prints the <paramref name="packages" /> as a table in a sorted manner.

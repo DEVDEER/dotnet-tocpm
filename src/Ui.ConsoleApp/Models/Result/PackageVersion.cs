@@ -2,20 +2,24 @@
 {
     using System.Xml.Serialization;
 
+    /// <summary>
+    /// Represents a single entry in the <see cref="ItemGroup" />.
+    /// </summary>
     public class PackageVersion
     {
-        #region constructors and destructors
-
-
-        #endregion
-
         #region properties
 
+        /// <summary>
+        /// The ID of the package.
+        /// </summary>
         [XmlAttribute]
-        public string Include { get; set; }
+        public string Include { get; set; } = null!;
 
+        /// <summary>
+        /// The version of the package.
+        /// </summary>
         [XmlAttribute]
-        public string Version { get; set; }
+        public string Version { get; set; } = null!;
 
         #endregion
     }
