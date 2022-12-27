@@ -88,13 +88,18 @@
         /// </summary>
         /// <param name="files">The list of files in which to remove versions.</param>
         /// <param name="backup">Indicates if every file should be backed up before operation.</param>
-        public static void RemoveVersions(FileInfo[]? files, bool backup = true)
+        public static void RemoveVersions(FileInfo[] files, bool backup = true)
         {
             var regex = new Regex("<PackageReference (.*)( Version=\"(.*)\")");
             foreach (var file in files)
             {
                 if (backup)
                 {
+                    if (string.IsNullOrEmpty(file.DirectoryName))
+                    {
+                        throw new ApplicationException(
+                            $"Invalid file information for {file} -> directory name is missing.");
+                    }
                     file.CopyTo(
                         Path.Combine(file.DirectoryName, file.Name.Replace(file.Extension, $"{file.Extension}.bak")));
                 }

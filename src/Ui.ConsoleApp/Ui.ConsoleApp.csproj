@@ -13,13 +13,14 @@
 		<Description>This dotnet tool reads all csproj-files under a given folder and converts them to use the Nuget CPM instead of implicit versionning inside the csproj.  </Description>
 		<Copyright>2022 DEVDEER GmbH</Copyright>
 		<PackageProjectUrl>https://github.com/DEVDEER/dotnet-tocpm</PackageProjectUrl>
-		<PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/DEVDEER/dotnet-tocpm</RepositoryUrl>
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>First release</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackAsTool>true</PackAsTool>
@@ -31,6 +32,7 @@
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>
+		<None Include="readme.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Spectre.Console" Version="0.45.0" />
