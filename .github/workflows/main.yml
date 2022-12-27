@@ -41,4 +41,4 @@ jobs:
       - name: Pack
         run: dotnet pack -c Release -o package
       - name: Push
-        run: dotnet nuget push ./package/*.nupkg --source "https://nuget.pkg.github.com/DEVDEER/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push ./package/*.nupkg --api-key ${{ secrets.NUGET_TOKEN }}
