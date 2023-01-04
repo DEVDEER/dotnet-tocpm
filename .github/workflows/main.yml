@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .
+        working-directory: src/Ui/Ui.ConsoleApp
     strategy:
       matrix:
         dotnet-version: ['7.0.x']
@@ -25,23 +25,18 @@ jobs:
         uses: gittools/actions/gitversion/execute@v0.9.7
         with:
           useConfigFile: true
-          configFilePath: ./.github/gitversion.yml
+          configFilePath: ./.github/GitVersion.yml
       - name: Setup .NET SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        working-directory: src/Ui/Ui.ConsoleApp
         run: dotnet restore
       - name: Build
-        working-directory: src/Ui/Ui.ConsoleApp
         run: dotnet build -c Release --no-restore /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{ steps.gitversion.outputs.InformationalVersion }}
       - name: Test
-        working-directory: src/Ui/Ui.ConsoleApp
         run: dotnet test -c Release /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} --no-build --verbosity normal
       - name: Pack
-        working-directory: src/Ui/Ui.ConsoleApp
         run: dotnet pack -c Release -o package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
       - name: Push
-        working-directory: src/Ui/Ui.ConsoleApp
         run: dotnet nuget push ./package/*.nupkg --source "https://nuget.pkg.github.com/DEVDEER/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
