@@ -1,33 +1,5 @@
-next-version: 0.0.3-alpha
-branches:
-  main:
-    regex: ^main$,
-    increment: Minor
-    mode: ContinuousDelivery
-    source-branches: ['develop', 'release']
-    is-release-branch: false
-    is-mainline: true
-  develop:
-    regex: ^dev(elop)?(ment)?$
-    mode: ContinuousDeployment
-    label: alpha
-    increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    tracks-release-branches: true
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 0
-  release:
-    regex: ^releases?[/-]
-    mode: ContinuousDelivery
-    label: beta
-    increment: None
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    source-branches: ['develop', 'main', 'support', 'release']
-    tracks-release-branches: false
-    is-release-branch: true
-    is-mainline: false
-    pre-release-weight: 30000
-update-build-number: true
+next-version: 1.0.0
+branches: {}
+ignore:
+  sha: []
+merge-message-formats: {}
