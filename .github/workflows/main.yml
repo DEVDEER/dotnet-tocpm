@@ -16,6 +16,11 @@ jobs:
         dotnet-version: ['7.0.x']
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Write environment
+        run: |
+          printenv
       - name: Install GitVersion
         if: ${{ false }}
         uses: gittools/actions/gitversion/setup@v0.9.7
