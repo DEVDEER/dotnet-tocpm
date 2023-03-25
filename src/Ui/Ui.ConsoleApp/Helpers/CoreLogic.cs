@@ -4,7 +4,9 @@
 
 	using Models.Result;
 
-	/// <summary>
+    using Spectre.Console;
+
+    /// <summary>
 	/// Provides core logic methods.
 	/// </summary>
 	public static class CoreLogic
@@ -65,7 +67,7 @@
 					var name = match.Groups[1]
 						.Value;
 					var version = match.Groups[2]
-						.Value;
+						.Value.EscapeMarkup();
 					if (!result.ContainsKey(name))
 					{
 						result.Add(name, version);
