@@ -101,14 +101,19 @@
                     {
                         while (reader.Read())
                         {
-                            if (reader.NodeType == XmlNodeType.Element && reader.Name == "PackageReference")
+                            if (reader.NodeType == XmlNodeType.Element && reader is { Name: "PackageReference", HasAttributes: true })
                             {
+                                var version = reader.GetAttribute("Version");
+                                if (string.IsNullOrEmpty(version))
+                                {
+                                    // This is odd because every pacakge reference must have a version normally.
+                                    continue;
+                                }
                                 var info = new PackageInformation
                                 {
                                     Name = reader.GetAttribute("Include") ?? throw new ApplicationException(
                                         "Invalid csproj version reference. Include is missing."),
-                                    Version = reader.GetAttribute("Version") ?? throw new ApplicationException(
-                                        "Invalid csproj version reference. Version is missing."),
+                                    Version = version,
                                     Xml = reader.ReadOuterXml()
                                 };
                                 if (!result.ContainsKey(info.Name))
