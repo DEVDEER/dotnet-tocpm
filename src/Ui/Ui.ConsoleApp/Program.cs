@@ -13,12 +13,11 @@ app.Configure(
         config.SetApplicationName("tocpm");
         config.AddCommand<SimulateCommand>("simulate")
             .WithDescription("Simulates the operation at the provided location and writes the results to the console.")
-            .WithExample(new[] { "simulate", "." });
+            .WithExample("simulate", ".");
         config.AddCommand<ExecuteCommand>("execute")
             .WithDescription("Executes a real run at the specified location.")
-            .WithExample(new[] { "run", @"C:\temp\project" })
-            .WithExample(new[] { "run", @"C:\temp\project", "-f" });
+            .WithExample("run", @"C:\temp\project")
+            .WithExample("run", @"C:\temp\project", "-f");
     });
 var result = app.Run(args);
-Console.ReadKey();
 return result;

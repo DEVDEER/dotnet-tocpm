@@ -68,6 +68,11 @@
                             success = true;
                         }
                     });
+            if (!result?.Any() ?? true)
+            {
+                AnsiConsole.WriteLine("No packages found.");
+                return 0;
+            }
             if (OnlySimulate)
             {
                 if (!string.IsNullOrEmpty(markupResult))
