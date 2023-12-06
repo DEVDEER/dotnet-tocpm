@@ -5,12 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{8876EB37-A519-449F-937D-A25AB04F3602}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ui.ConsoleApp", "Ui\Ui.ConsoleApp\Ui.ConsoleApp.csproj", "{C07DBCA8-B976-4F98-BADB-FEDA269E4373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ui.ConsoleApp", "src\Ui\Ui.ConsoleApp\Ui.ConsoleApp.csproj", "{C07DBCA8-B976-4F98-BADB-FEDA269E4373}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{147D0426-E603-4F5E-8F32-4F1F3ED5A8C0}"
 	ProjectSection(SolutionItems) = preProject
-		..\.gitignore = ..\.gitignore
-		..\README.md = ..\README.md
+		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

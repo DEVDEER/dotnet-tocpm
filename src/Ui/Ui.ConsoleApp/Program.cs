@@ -20,4 +20,5 @@ app.Configure(
             .WithExample(new[] { "run", @"C:\temp\project", "-f" });
     });
 var result = app.Run(args);
+Console.ReadKey();
 return result;
