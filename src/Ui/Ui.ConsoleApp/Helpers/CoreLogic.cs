@@ -85,7 +85,7 @@
         /// This method assumes that a .NET project file with package references is provided.
         /// </para>
         /// <para>
-        /// If multiple packages of the same id are found the one with the highest version is taken.
+        /// If multiple packages of the same id are found the one with the highest version is used.
         /// </para>
         /// </remarks>
         /// <param name="files">The project files to check.</param>
@@ -106,7 +106,7 @@
                                 var version = reader.GetAttribute("Version");
                                 if (string.IsNullOrEmpty(version))
                                 {
-                                    // This is odd because every pacakge reference must have a version normally.
+                                    // This is odd because every package reference must have a version normally.
                                     continue;
                                 }
                                 var info = new PackageInformation
