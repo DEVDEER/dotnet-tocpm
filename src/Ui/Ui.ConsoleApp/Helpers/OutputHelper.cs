@@ -23,7 +23,8 @@
             table.AddColumn(new TableColumn("Version"));
             foreach (var package in packages.Keys.OrderBy(k => k))
             {
-                table.AddRow(package, packages[package].Version);
+                var version = Markup.Escape(packages[package].Version);
+                table.AddRow(package, version);
             }
             AnsiConsole.Write(table);
         }

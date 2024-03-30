@@ -6,7 +6,7 @@
 		<RootNamespace>devdeer.tools.tocpm</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-        <Version>1.1.1</Version>
+        <Version>1.2.0</Version>
 		<PackageId>devdeer.tools.tocpm</PackageId>
 		<Title>Nuget CPM converter</Title>
 		<Authors>DEVDEER GmbH</Authors>
@@ -19,9 +19,7 @@
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>
-            - Complete redesign of version identification to fix bugs with packages with more than 1 line and additional attributes lost in packages.
-            - Upgraded to .NET 8.
-            - Package upgrades of Spectre Console.
+            - Fixed issue with characters breaking the Spectre markup on output.
 		</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>

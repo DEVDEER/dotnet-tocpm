@@ -64,7 +64,7 @@
                         result = CoreLogic.GetPackagePropContent(packages);
                         if (OnlySimulate)
                         {
-                            markupResult = MarkupHelper.AddConsoleMarkup(result);
+                            markupResult = MarkupHelper.AddConsoleMarkup(Markup.Escape(result));
                             success = true;
                         }
                     });
