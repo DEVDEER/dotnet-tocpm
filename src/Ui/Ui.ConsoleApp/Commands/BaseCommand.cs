@@ -95,7 +95,7 @@
             }
             AnsiConsole.Status()
                 .Start(
-                    "Tranforming folder to CPM...",
+                    "Transforming folder to CPM...",
                     ctx =>
                     {
                         try
