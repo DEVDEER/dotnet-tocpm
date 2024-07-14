@@ -42,8 +42,8 @@ USAGE:
 
 EXAMPLES:
     tocpm simulate .
-    tocpm run C:\temp\project
-    tocpm run C:\temp\project -f
+    tocpm execute C:\temp\project
+    tocpm execute C:\temp\project -f
 
 OPTIONS:
     -h, --help       Prints help information
@@ -52,7 +52,6 @@ OPTIONS:
 COMMANDS:
     simulate    Simulates the operation at the provided location and writes the results to the console
     execute     Executes a real run at the specified location
-
 ```
 
 A simple and secure way to test the tool is to perform a dry run. Use the `simulate` command for this by specifying a folder. Lets assume that you've got a solution in the folder `C:\temp\test`. Your command then would be
