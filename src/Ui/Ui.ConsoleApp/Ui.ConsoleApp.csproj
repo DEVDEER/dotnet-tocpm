@@ -19,7 +19,7 @@
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>
-            - Fixed issue with characters breaking the Spectre markup on output.
+            - Documentation is fixed and the wrong "run" is replaced by correct "execute".
 		</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>

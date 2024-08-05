@@ -3,7 +3,8 @@ name: "tocpm CD"
 on:
   pull_request_target:
     types: [closed, approved]
-    branches: [main]  
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   approved:
