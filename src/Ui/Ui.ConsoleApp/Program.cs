@@ -16,8 +16,8 @@ app.Configure(
             .WithExample("simulate", ".");
         config.AddCommand<ExecuteCommand>("execute")
             .WithDescription("Executes a real run at the specified location.")
-            .WithExample("run", @"C:\temp\project")
-            .WithExample("run", @"C:\temp\project", "-f");
+            .WithExample("execute", @"C:\temp\project")
+            .WithExample("execute", @"C:\temp\project", "-f");
     });
 var result = app.Run(args);
 return result;
