@@ -26,7 +26,7 @@ The tool requires the .NET 7 runtime (or SDK) installed on the machine.
 Use the following command to install `dotnet-tocpm`:
 
 ```shell
-dotnet tool install -g --prerelease devdeer.tools.tocpm
+dotnet tool install -g devdeer.tools.tocpm
 ```
 
 After this command ran you can check the success by running:
@@ -39,7 +39,7 @@ This should result in an output like this:
 
 ```shell
 tocpm -v
-0.0.1-alpha
+1.3.1
 ```
 
 ## Usage
