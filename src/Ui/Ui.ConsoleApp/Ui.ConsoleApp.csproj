@@ -6,7 +6,7 @@
 		<RootNamespace>devdeer.tools.tocpm</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-        <Version>1.3.1</Version>
+        <Version>1.3.2</Version>
 		<PackageId>devdeer.tools.tocpm</PackageId>
 		<Title>Nuget CPM converter</Title>
 		<Authors>DEVDEER GmbH</Authors>
@@ -30,6 +30,11 @@
 		<ToolCommandName>tocpm</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="DotnetToolSettings.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
 	<ItemGroup>
 		<None Update="icon.png">
 			<Pack>True</Pack>
