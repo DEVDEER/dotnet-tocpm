@@ -8,7 +8,7 @@ Switching to Nuget CPM can be a pain when it comes to bigger solutions containin
 
 ## Requirements
 
-The tool requires the .NET 7 runtime (or SDK) installed on the machine.
+The tool requires the .NET 9 runtime (or SDK) installed on the machine.
 
 ## Installation
 
@@ -93,5 +93,5 @@ execute:
 
 To actually perform the operation you first replace `simulate` by `execute`. This also gives you 2 more options (run `tocpm execute -h`):
 
-- `-f|--force` will prevent any confirmation from the user before executing the command.
-- `-b|--backup` will create a copy of each project file in its folder with the file ending `.bak`.
+-   `-f|--force` will prevent any confirmation from the user before executing the command.
+-   `-b|--backup` will create a copy of each project file in its folder with the file ending `.bak`.
