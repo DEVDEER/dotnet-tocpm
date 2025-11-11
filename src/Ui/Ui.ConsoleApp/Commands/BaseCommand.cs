@@ -23,7 +23,7 @@
         #region methods
 
         /// <inheritdoc />
-        public override int Execute([NotNull] CommandContext context, [NotNull] DefaultSettings settings)
+        public override int Execute(CommandContext context, DefaultSettings settings, CancellationToken cancellationToken)
         {
             var path = settings.Path;
             if (!Directory.Exists(path))

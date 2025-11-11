@@ -1,29 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>tocpm</AssemblyName>
 		<RootNamespace>devdeer.tools.tocpm</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-        <Version>1.3.1</Version>
+        <Version>1.4.0</Version>
 		<PackageId>devdeer.tools.tocpm</PackageId>
 		<Title>Nuget CPM converter</Title>
 		<Authors>DEVDEER GmbH</Authors>
 		<Description>This dotnet tool reads all csproj-files under a given folder and converts them to use the Nuget CPM instead of implicit versionning inside the csproj.  </Description>
-        <PackageReadmeFile>readme.md</PackageReadmeFile>
-		<Copyright>2023 DEVDEER GmbH</Copyright>
+		<Copyright>2025 DEVDEER GmbH</Copyright>
 		<PackageProjectUrl>https://github.com/DEVDEER/dotnet-tocpm</PackageProjectUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/DEVDEER/dotnet-tocpm</RepositoryUrl>
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>
-            - Documentation is fixed and the wrong "run" is replaced by correct "execute".
+            - .NET 9
+            - Fixed pipeline
+            - Fixed README
 		</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackAsTool>true</PackAsTool>
@@ -35,10 +36,13 @@
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>
-		<None Include="readme.md" Pack="true" PackagePath="\" />
+        <None Update="README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Spectre.Console" Version="0.49.1" />
-		<PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />
+		<PackageReference Include="Spectre.Console" Version="0.53.0" />
+		<PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
 	</ItemGroup>
 </Project>
