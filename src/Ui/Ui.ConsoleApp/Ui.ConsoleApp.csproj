@@ -18,7 +18,9 @@
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>dotnet,tool,nuget,CPM</PackageTags>
 		<PackageReleaseNotes>
-            - Documentation is fixed and the wrong "run" is replaced by correct "execute".
+            - .NET 9
+            - Fixed pipeline
+            - Fixed README
 		</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageIcon>icon.png</PackageIcon>
