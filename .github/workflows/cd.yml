@@ -1,51 +1,49 @@
-name: "tocpm CD"
+name: 'tocpm CD'
 
 on:
-  pull_request_target:
-    types: [closed, approved]
-    branches: [main]
-  workflow_dispatch:
+    push:
+        branches: [main]
+    workflow_dispatch:
 
 jobs:
-  approved:
-    if: github.event.review.state == 'APPROVED'
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src/Ui/Ui.ConsoleApp
-    strategy:
-      matrix:
-        dotnet-version: ["8.0.x"]
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Write environment
-        run: |
-          printenv
-      - name: Install GitVersion
-        if: ${{ false }}
-        uses: gittools/actions/gitversion/setup@v0.9.7
-        with:
-          versionSpec: "5.x"
-      - name: Build version
-        if: ${{ false }}
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.7
-        with:
-          useConfigFile: true
-          configFilePath: ./.github/gitversion.yml
-      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build -c Release --no-restore
-      - name: Test
-        run: dotnet test -c Release --no-build --verbosity normal
-      - name: Pack
-        run: dotnet pack -c Release -o package
-      - name: Push
-        run: dotnet nuget push ./package/*.nupkg -n --skip-duplicate --source nuget.org --api-key ${{ secrets.NUGET_TOKEN }}
+    release:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: src/Ui/Ui.ConsoleApp
+        strategy:
+            matrix:
+                dotnet-version: ['9.0.x']
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Write environment
+              run: |
+                  printenv
+            - name: Install GitVersion
+              if: ${{ false }}
+              uses: gittools/actions/gitversion/setup@v0.9.7
+              with:
+                  versionSpec: '5.x'
+            - name: Build version
+              if: ${{ false }}
+              id: gitversion
+              uses: gittools/actions/gitversion/execute@v0.9.7
+              with:
+                  useConfigFile: true
+                  configFilePath: ./.github/gitversion.yml
+            - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+              uses: actions/setup-dotnet@v3
+              with:
+                  dotnet-version: ${{ matrix.dotnet-version }}
+            - name: Install dependencies
+              run: dotnet restore
+            - name: Build
+              run: dotnet build -c Release --no-restore
+            - name: Test
+              run: dotnet test -c Release --no-build --verbosity normal
+            - name: Pack
+              run: dotnet pack -c Release -o package
+            - name: Push
+              run: dotnet nuget push ./package/*.nupkg -n --skip-duplicate --source nuget.org --api-key ${{ secrets.NUGET_TOKEN }}

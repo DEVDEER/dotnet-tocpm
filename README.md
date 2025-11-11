@@ -19,7 +19,7 @@ I made this video on my codingfreaks channel on yt where I explain the backgroun
 
 ## Requirements
 
-The tool requires the .NET 7 runtime (or SDK) installed on the machine.
+The tool requires the .NET 9 runtime (or SDK) installed on the machine.
 
 ## Installation
 
@@ -53,8 +53,8 @@ USAGE:
 
 EXAMPLES:
     tocpm simulate .
-    tocpm run C:\temp\project
-    tocpm run C:\temp\project -f
+    tocpm execute C:\temp\project
+    tocpm execute C:\temp\project -f
 
 OPTIONS:
     -h, --help       Prints help information
@@ -105,5 +105,5 @@ execute:
 
 To actually perform the operation you first replace `simulate` by `execute`. This also gives you 2 more options (run `tocpm execute -h`):
 
-- `-f|--force` will prevent any confirmation from the user before executing the command.
-- `-b|--backup` will create a copy of each project file in its folder with the file ending `.bak`.
+-   `-f|--force` will prevent any confirmation from the user before executing the command.
+-   `-b|--backup` will create a copy of each project file in its folder with the file ending `.bak`.
