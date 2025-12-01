@@ -45,7 +45,7 @@
                     {
                         // collect files
                         ctx.Spinner(Spinner.Known.Default);
-                        files = CoreLogic.CollectProjectFiles(path, "csproj");
+                        files = CoreLogic.CollectProjectFiles(path, ["csproj", "fsproj"]);
                         AnsiConsole.MarkupLine($"Found [bold yellow]{files.Length}[/] files.");
                         if (!files.Any())
                         {

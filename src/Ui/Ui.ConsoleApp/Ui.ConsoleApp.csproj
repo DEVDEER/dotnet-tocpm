@@ -10,7 +10,7 @@
 		<PackageId>devdeer.tools.tocpm</PackageId>
 		<Title>Nuget CPM converter</Title>
 		<Authors>DEVDEER GmbH</Authors>
-		<Description>This dotnet tool reads all csproj-files under a given folder and converts them to use the Nuget CPM instead of implicit versionning inside the csproj.  </Description>
+		<Description>This dotnet tool reads all [csproj|fsproj]-files under a given folder and converts them to use the Nuget CPM instead of implicit versionning inside the csproj or fsproj.  </Description>
 		<Copyright>2025 DEVDEER GmbH</Copyright>
 		<PackageProjectUrl>https://github.com/DEVDEER/dotnet-tocpm</PackageProjectUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

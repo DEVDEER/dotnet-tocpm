@@ -14,19 +14,19 @@
         #region methods
 
         /// <summary>
-        /// Tries to detect all csproj files under a certain path.
+        /// Tries to detect all csproj and fsproj files under a certain path.
         /// </summary>
         /// <param name="path">The root path from which to start the search.</param>
         /// <param name="ending">The file ending to search for.</param>
         /// <returns>The list of file information found.</returns>
-        public static FileInfo[] CollectProjectFiles(string path, string ending)
+        public static FileInfo[] CollectProjectFiles(string path, string[] endings)
         {
             var dirInfo = new DirectoryInfo(path);
-            var result = dirInfo.GetFiles($"*.{ending}")
+            var result = endings.SelectMany(ending => dirInfo.GetFiles($"*.{ending}"))
                 .ToList();
             foreach (var subDir in dirInfo.GetDirectories())
             {
-                result.AddRange(CollectProjectFiles(subDir.FullName, ending));
+                result.AddRange(CollectProjectFiles(subDir.FullName, endings));
             }
             return result.ToArray();
         }
@@ -112,7 +112,7 @@
                                 var info = new PackageInformation
                                 {
                                     Name = reader.GetAttribute("Include") ?? throw new ApplicationException(
-                                        "Invalid csproj version reference. Include is missing."),
+                                        "Invalid csproj or fsproj version reference. Include is missing."),
                                     Version = version,
                                     Xml = reader.ReadOuterXml()
                                 };

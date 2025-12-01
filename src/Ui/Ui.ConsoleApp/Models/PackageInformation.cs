@@ -1,7 +1,7 @@
 ﻿namespace devdeer.tools.tocpm.Models
 {
     /// <summary>
-    /// Represents the information about a single Nuget package from a csproj.
+    /// Represents the information about a single Nuget package from a csproj or fsproj file.
     /// </summary>
     public class PackageInformation
     {
