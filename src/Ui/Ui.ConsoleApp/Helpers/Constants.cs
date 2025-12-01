@@ -8,7 +8,7 @@ namespace devdeer.tools.tocpm.Helpers
         #region constants
 
         /// <summary>
-        /// The regular expression to find any package reference for later deletion in a csproj file.
+        /// The regular expression to find any package reference for later deletion in a [csproj|fsproj] file.
         /// </summary>
         public static readonly string PackageReferencesToRemoveRegex = "<PackageReference (.*)( Version=\"(.*)\")";
 
