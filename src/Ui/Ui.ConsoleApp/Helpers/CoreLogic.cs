@@ -112,7 +112,7 @@
                                 var info = new PackageInformation
                                 {
                                     Name = reader.GetAttribute("Include") ?? throw new ApplicationException(
-                                        "Invalid csproj version reference. Include is missing."),
+                                        $"Invalid csproj version reference. Include is missing. File location: {file.FullName}"),
                                     Version = version,
                                     Xml = reader.ReadOuterXml()
                                 };
